@@ -1080,16 +1080,26 @@ html[lang="ar"] .foot h4 { font-size: .85rem; }
   window.addEventListener("scroll", onScrollTop, { passive: true });
 
   /* ---- reveal on entry -------------------------------------------------- */
-  var reveals = document.querySelectorAll(".reveal");
+  var reveals = Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+  function showAll() { reveals.forEach(function (el) { el.classList.add("is-visible"); }); }
+
   if (!("IntersectionObserver" in window)) {
-    Array.prototype.forEach.call(reveals, function (el) { el.classList.add("is-visible"); });
+    showAll();
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
-    Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
+
+    reveals.forEach(function (el) {
+      // Anything already on screen is shown in the first painted frame rather
+      // than waiting on an observer callback — the page has to read correctly
+      // at rest, including in a screenshot or a preview thumbnail. Only what
+      // starts below the fold is left for the observer to fade in.
+      if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add("is-visible"); }
+      else { io.observe(el); }
+    });
   }
 
   /* ---- scroll spy: rail dots, nav underline, progress bar ---------------- */
