@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>شركة وسام التقني | المنصات</title>
+
+<!-- ================= SEO ================= -->
+<meta name="description" content="شركة وسام التقني تبني وتُشغّل سبع منصات متكاملة تغطي التخليص الجمركي والنقل البري والتخزين الذكي والتجارة بالجملة والتجزئة والتوصيل للميل الأخير.">
+<meta name="keywords" content="وسام التقني, تخليص, توصيل, تخزين, توفير, توفيري, توصيل إكسبريس, Wisam Tech, Takhlees, Tawseel, Takhzeen, Tawfir, Tawfiry, customs clearance, land freight, smart warehousing, last-mile delivery">
+<meta name="author" content="Wisam Tech">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="شركة وسام التقني | المنصات">
+<meta property="og:description" content="سبع منصات متكاملة — التخليص والنقل والتخزين والجملة والتجزئة والتوصيل — تعمل على سجل تشغيلي واحد.">
+<meta property="og:site_name" content="Wisam Tech">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:locale:alternate" content="en_US">
+
+<link rel="icon" href="./assets/logo-wisamtech-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap">
+
+<!-- Set before the stylesheet is applied, so the reveal animation is only ever
+     armed when there is scripting to disarm it again. -->
+<script>document.documentElement.className += " js";</script>
+
+<style>
+/* ============================================================================
+   شركة وسام التقني — Wisam Tech Co. company profile. Platforms only.
+
+   A deliberate counterpoint to the dark glass-and-video site: warm paper,
+   hairline rules, editorial type. The colour system is carried over from the
+   Wisam Sales Trading sheet (preview.html) so the two properties read as
+   siblings — same warm neutrals, same restraint — with that site's indigo
+   swapped for the teal of the Wisam Tech mark.
+
+   Bilingual, Arabic first. Every directional rule below uses logical
+   properties (inset-inline-*, margin-inline-*, padding-inline-*) so the whole
+   layout mirrors when dir flips to ltr — there is no separate RTL stylesheet.
+
+   Colour carries meaning in exactly one place: each platform keeps its own
+   app-icon hue, so the lineup stays legible at a glance.
+   ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   Palette. Warm neutrals do the work; teal is reserved for interactive things
+   and section labels. Contrast on the two page grounds (paper / sand):
+     ink   14.25 / 12.86      muted   5.17 / 4.66
+     ink-2  7.65 /  —         teal    5.79 / 5.22
+   White on teal 5.99, white on deep 15.67. All AA for body text.
+   --teal-bright is the logo cyan: decoration and dark grounds only, never
+   text on a light background.
+   ---------------------------------------------------------------------------- */
+:root {
+  --paper:      #FCFBF8;   /* warm white */
+  --paper-2:    #F3EFE7;   /* sand — alternating section ground */
+  --white:      #FFFFFF;
+
+  --ink:        #1E2A2D;   /* headings */
+  --ink-2:      #47535A;   /* body */
+  --muted:      #636C74;   /* secondary text, AA on both grounds */
+
+  --teal:       #0B6E76;   /* brand accent */
+  --teal-dk:    #075257;
+  --teal-bright:#14BCD6;   /* the mark's cyan — decoration only */
+  --teal-tint:  #E4F0F1;
+
+  --rule:       #E4DED3;
+  --rule-soft:  #EFEAE1;
+  --deep:       #14262A;   /* footer — charcoal with a teal cast */
+
+  /* Platform hues, sampled from each app icon so the page agrees with the art. */
+  --p-takhlees: #2E90EA;
+  --p-tawseel:  #1B8A3C;
+  --p-takhzeen: #EE7F13;
+  --p-tawfir:   #E01B1B;
+  --p-express:  #EFA318;
+  --p-tawfiry:  #B7145A;
+
+  --body:    "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --ui:      "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* English swaps the display face to the serif; Arabic has no serif companion
+   in this superfamily, so it keeps the sans throughout. */
+html[lang="en"] { --display: "IBM Plex Serif", Georgia, "Times New Roman", serif; }
+
+/* The fixed rail, and the gutter the page reserves for it. */
+:root { --rail: 0px; }
+@media (min-width: 1000px) { :root { --rail: 74px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--body);
+  font-size: clamp(1rem, .96rem + .2vw, 1.0625rem);
+  line-height: 1.8;
+  color: var(--ink-2);
+  background: var(--paper);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  color: var(--ink);
+  margin: 0 0 .5em;
+  line-height: 1.2;
+  font-weight: 600;
+}
+html[lang="en"] h1, html[lang="en"] h2,
+html[lang="en"] h3, html[lang="en"] h4 { letter-spacing: -.015em; }
+
+h1 { font-size: clamp(2.05rem, 1.3rem + 3.4vw, 3.9rem); line-height: 1.08; }
+h2 { font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem); }
+h3 { font-size: clamp(1.08rem, 1rem + .35vw, 1.3rem); }
+
+/* Arabic needs more leading, and no tightened tracking. */
+html[lang="ar"] h1 { line-height: 1.32; }
+html[lang="ar"] h2 { line-height: 1.38; }
+html[lang="ar"] h3 { line-height: 1.5; }
+
+p  { margin: 0 0 1em; }
+p:last-child { margin-bottom: 0; }
+a  { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; border-radius: 3px; }
+[hidden] { display: none !important; }
+
+.wrap { margin-inline-start: var(--rail); }
+.container { width: 100%; max-width: 1020px; margin-inline: auto; padding-inline: clamp(1.15rem, 5vw, 2.5rem); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; inset-block-start: -100%; inset-inline-start: 1rem; z-index: 300;
+  background: var(--ink); color: #fff; padding: .7rem 1.2rem;
+  border-radius: 0 0 8px 8px; font-weight: 600; text-decoration: none;
+}
+.skip-link:focus { inset-block-start: 0; }
+
+/* Small caps-style labels. Uppercasing and wide tracking are Latin
+   conventions and damage Arabic, so they are applied per-language. */
+.label {
+  font-family: var(--ui); font-size: .73rem; font-weight: 600;
+}
+html[lang="en"] .label { text-transform: uppercase; letter-spacing: .14em; }
+html[lang="ar"] .label { letter-spacing: 0; font-size: .82rem; }
+
+/* ===========================================================  RAIL  ======= */
+.rail {
+  position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 60;
+  width: var(--rail); display: none;
+  border-inline-end: 1px solid var(--rule);
+  background: var(--paper);
+  flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem;
+}
+@media (min-width: 1000px) { .rail { display: flex; } }
+
+.rail a { display: grid; place-items: center; width: 30px; height: 30px; text-decoration: none; position: relative; }
+.rail a::after {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: #C6CFD0; transition: background-color .25s, box-shadow .25s, transform .25s;
+}
+.rail a:hover::after { background: var(--teal); }
+.rail a.is-active::after { background: var(--teal); transform: scale(1.15); box-shadow: 0 0 0 4px rgba(11, 110, 118, .14); }
+.rail a span {
+  position: absolute; inset-inline-start: calc(100% + 10px); white-space: nowrap;
+  font-size: .72rem; font-weight: 600; color: var(--ink); background: var(--paper);
+  padding: .25em .55em; border: 1px solid var(--rule); border-radius: 5px;
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+.rail a:hover span, .rail a:focus-visible span { opacity: 1; }
+.rail__progress { position: absolute; inset-block-start: 0; inset-inline-end: -1px; width: 2px; background: var(--teal); height: 0; }
+
+/* =========================================================  HEADER  ======= */
+.top {
+  position: sticky; inset-block-start: 0; z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+.top.is-stuck { border-bottom-color: var(--rule); }
+.top__inner { display: flex; align-items: center; gap: .8rem; min-height: 70px; }
+
+.brand { display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; flex: none; }
+
+/* The mark keeps a fixed 2.25rem footprint in the bar, but the image inside it
+   is positioned rather than in flow — so while the page sits at the top it can
+   grow past the header's lower edge and hang down into the hero without making
+   the bar itself any taller. It is anchored to the top of that footprint so it
+   only ever grows downward, and tucks back to bar size once the header sticks.
+   html/body use overflow-x: clip rather than hidden precisely so this vertical
+   overhang is not cropped. */
+.brand__mark { position: relative; width: 2.25rem; height: 2.25rem; flex: none; }
+.brand__mark img {
+  position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  width: 2.25rem; height: 2.25rem;
+  /* the global img rule caps width at 100% of the wrapper, which would squash
+     the enlarged mark into an ellipse */
+  max-width: none;
+  transition: width .4s cubic-bezier(.22,1,.36,1), height .4s cubic-bezier(.22,1,.36,1);
+}
+.top:not(.is-stuck) .brand__mark img { width: 4.5rem; height: 4.5rem; }
+@media (min-width: 760px) {
+  .top:not(.is-stuck) .brand__mark img { width: 5.6rem; height: 5.6rem; }
+}
+
+.brand b {
+  font-family: var(--display); font-size: 1.02rem; font-weight: 600;
+  color: var(--ink); white-space: nowrap;
+  transition: margin-inline-start .4s cubic-bezier(.22,1,.36,1);
+}
+/* step the wordmark aside by exactly the extra width the mark takes up */
+.top:not(.is-stuck) .brand b { margin-inline-start: 2.45rem; }
+@media (min-width: 760px) { .top:not(.is-stuck) .brand b { margin-inline-start: 3.5rem; } }
+@media (max-width: 460px) { .brand b { display: none; } }
+
+.nav { display: none; align-items: center; gap: 1.5rem; }
+@media (min-width: 860px) { .nav { display: flex; margin-inline-start: auto; } }
+.nav a {
+  font-family: var(--ui); font-size: .87rem; font-weight: 500;
+  color: var(--ink-2); text-decoration: none; position: relative; padding-block: .3em;
+  transition: color .2s; white-space: nowrap;
+}
+.nav a::after {
+  content: ""; position: absolute; inset-block-end: 0; inset-inline: 0;
+  height: 1px; background: var(--teal); transform: scaleX(0);
+  transform-origin: center; transition: transform .25s;
+}
+.nav a:hover { color: var(--teal); }
+.nav a:hover::after, .nav a.is-active::after { transform: scaleX(1); }
+.nav a.is-active { color: var(--teal); }
+
+.top__actions { display: flex; align-items: center; gap: .7rem; margin-inline-start: auto; }
+@media (min-width: 860px) { .top__actions { margin-inline-start: 1.5rem; } }
+
+.top__mail {
+  font-family: var(--ui); font-size: .8rem; font-weight: 600;
+  color: var(--teal); text-decoration: none; white-space: nowrap;
+  direction: ltr; unicode-bidi: isolate;
+}
+.top__mail:hover { text-decoration: underline; }
+/* Dropped once the nav appears: the Arabic wordmark is long, and brand + nav +
+   address + language switch together overrun the bar between 860 and ~1100px.
+   The address still sits in the contact block and the footer. */
+@media (max-width: 1099px) { .top__mail { display: none; } }
+
+/* two-state language switch — no dropdown, only two languages exist */
+.langsw {
+  display: inline-flex; flex: none; overflow: hidden;
+  border: 1px solid var(--rule); border-radius: 100px; background: var(--white);
+}
+.langsw button {
+  font-family: var(--ui); font-size: .76rem; font-weight: 600;
+  padding: .45em .9em; border: 0; background: transparent; color: var(--muted);
+  cursor: pointer; transition: background-color .2s, color .2s; white-space: nowrap;
+}
+.langsw button.is-on { background: var(--teal); color: #fff; }
+.langsw button:not(.is-on):hover { background: var(--teal-tint); color: var(--teal-dk); }
+
+/* ==========================================================  HERO  ======== */
+.hero { position: relative; padding-block: clamp(3rem, 7.5vw, 6rem) clamp(2.4rem, 5vw, 3.8rem); overflow: hidden; }
+
+/* The mark, blown up and faded — colour without a photograph. */
+.hero__mark {
+  position: absolute; z-index: 0; pointer-events: none; user-select: none;
+  inset-block-start: -12%; inset-inline-end: -14%;
+  width: clamp(280px, 42vw, 600px); opacity: .1;
+}
+@media (min-width: 1000px) { .hero__mark { opacity: .14; inset-inline-end: -6%; } }
+
+.hero .container { position: relative; z-index: 1; }
+
+.eyebrow {
+  color: var(--teal); margin-bottom: 1.35rem;
+  display: flex; align-items: center; gap: .85rem;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+.hero h1 { max-width: 15ch; margin-bottom: .42em; }
+html[lang="ar"] .hero h1 { max-width: 19ch; }
+.hero h1 em { font-style: normal; color: var(--teal); }
+html[lang="en"] .hero h1 em { font-style: italic; }
+
+.hero__lead { font-size: clamp(1.05rem, 1rem + .5vw, 1.3rem); color: var(--muted); max-width: 58ch; }
+
+/* three-up figure row, counted off the page's own structure — nothing invented */
+.tally {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0 clamp(.9rem, 4vw, 2.5rem);
+  margin-top: clamp(2.3rem, 5vw, 3.2rem);
+  border-top: 1px solid var(--rule);
+}
+.tally div { padding-block: clamp(1.2rem, 3vw, 1.8rem); }
+.tally b {
+  display: block; font-family: var(--display); font-weight: 600;
+  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem); line-height: 1;
+  color: var(--ink); font-variant-numeric: tabular-nums;
+}
+html[lang="en"] .tally b { letter-spacing: -.03em; }
+.tally span { display: block; margin-top: .5rem; font-family: var(--ui); font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+/* =======================================================  SECTIONS  ======= */
+.sec { padding-block: clamp(3.2rem, 7vw, 5.6rem); }
+.sec--rule { border-top: 1px solid var(--rule); }
+.sec--tint { background: var(--paper-2); }
+
+.sec__head { display: flex; flex-direction: column; gap: .5rem; margin-bottom: clamp(2rem, 4vw, 3rem); max-width: 62ch; }
+.sec__index { color: var(--teal); }
+.sec__head p { color: var(--muted); font-size: 1.05rem; }
+
+/* ====================================================  PLATFORMS  ======== */
+.platforms { display: grid; gap: clamp(.9rem, 2vw, 1.15rem); grid-template-columns: 1fr; }
+@media (min-width: 680px)  { .platforms { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .platforms { grid-template-columns: repeat(3, 1fr); } }
+
+.platform {
+  /* white ground on purpose: the supplied icon art carries its own white
+     margin, which disappears against a white card instead of showing as a
+     pale box on the sand ground */
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  padding: clamp(1.25rem, 2.6vw, 1.6rem);
+  display: flex; flex-direction: column; gap: .85rem;
+  position: relative; overflow: hidden;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+.platform::before {
+  /* the platform's own hue, as a hairline along the top edge */
+  content: ""; position: absolute; inset-block-start: 0; inset-inline: 0; height: 3px;
+  background: var(--hue, var(--teal));
+  transform: scaleX(0); transition: transform .35s ease;
+}
+.platform:hover { border-color: #D6CEC0; box-shadow: 0 10px 30px -18px rgba(30, 42, 45, .35); transform: translateY(-2px); }
+.platform:hover::before { transform: scaleX(1); }
+
+/* The lead card — Wisam Tech itself, the layer the other six sit on. */
+.platform--lead { background: var(--teal-tint); border-color: #CADEE0; }
+@media (min-width: 680px)  { .platform--lead { grid-column: span 2; } }
+@media (min-width: 1020px) { .platform--lead { grid-column: span 3; flex-direction: row; align-items: flex-start; gap: 1.8rem; } }
+.platform--lead::before { background: var(--teal); }
+.platform--lead .platform__icon { background: transparent; }
+@media (min-width: 1020px) { .platform--lead .platform__body { flex: 1; } }
+
+.platform__icon {
+  width: 86px; height: 86px; flex: none;
+  border-radius: 19px; overflow: hidden; background: var(--white);
+  display: grid; place-items: center;
+}
+.platform__icon img { width: 100%; height: 100%; object-fit: contain; }
+
+/* The six platform marks are supplied with a wide white margin around the
+   rounded square. A gentle zoom trims most of it so the icons carry their
+   proper weight; anything left over is white on white and invisible. The lead
+   card's mark is cropped to its own edge already, so it is left alone. */
+.platform:not(.platform--lead) .platform__icon img { transform: scale(1.14); }
+
+.platform__kicker { color: var(--hue, var(--teal)); font-size: .7rem; }
+html[lang="ar"] .platform__kicker { font-size: .8rem; }
+.platform h3 { margin: .35rem 0 .1rem; }
+
+/* The same platform name in the other language. The name itself is wrapped in
+   <bdi> by the language switch, which isolates it and picks its direction from
+   its own script — so trailing punctuation stays put — while this block keeps
+   the page's direction and so aligns to the page's own reading edge. */
+.platform__alt { font-size: .93rem; color: var(--muted); margin-bottom: .5rem; }
+
+.platform p { color: var(--muted); font-size: .94rem; }
+
+.tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; padding-top: .9rem; }
+.tags li {
+  font-family: var(--ui); font-size: .75rem; font-weight: 500; color: var(--ink-2);
+  padding: .32em .85em; background: var(--paper-2);
+  border: 1px solid var(--rule-soft); border-radius: 100px;
+}
+.platform--lead .tags li { background: rgba(255,255,255,.72); border-color: #CADEE0; }
+
+/* =========================================================  FLOW  ======== */
+/* One consignment, five stages, each owned by a platform. Horizontal stepper
+   on wide screens; a vertical spine on narrow ones. */
+.flow { display: grid; gap: 0; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .flow { grid-template-columns: repeat(5, 1fr); gap: 0 1.4rem; } }
+
+.flow__step { position: relative; padding-inline-start: 3.1rem; padding-block: 0 1.8rem; }
+@media (min-width: 900px) { .flow__step { padding-inline-start: 0; padding-block: 3.1rem 0; } }
+
+/* the spine the numbers sit on */
+.flow__step::before {
+  content: ""; position: absolute; background: var(--rule);
+  inset-inline-start: 15px; inset-block-start: 34px; inset-block-end: 0; width: 1px;
+}
+@media (min-width: 900px) {
+  .flow__step::before {
+    inset-inline-start: 40px; inset-block-start: 15px; inset-block-end: auto;
+    width: auto; inset-inline-end: -1.4rem; height: 1px;
+  }
+  .flow__step:last-child::before { display: none; }
+}
+
+.flow__num {
+  position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--hue, var(--teal)); color: #fff;
+  font-family: var(--ui); font-size: .74rem; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.flow__step h3 { margin: 0 0 .15rem; font-size: 1.05rem; }
+.flow__owner { color: var(--hue, var(--teal)); margin-bottom: .4rem; font-size: .76rem; }
+html[lang="ar"] .flow__owner { font-size: .85rem; }
+.flow__step p { color: var(--muted); font-size: .9rem; }
+
+/* =========================================================  REACH  ======= */
+.sectors { display: flex; flex-wrap: wrap; gap: .5rem; }
+.sectors li {
+  font-family: var(--ui); font-size: .87rem; font-weight: 500; color: var(--ink);
+  padding: .45em 1.1em; background: var(--white);
+  border: 1px solid var(--rule); border-radius: 100px;
+}
+
+.reach { display: grid; gap: clamp(2rem, 5vw, 3.2rem); grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 860px) { .reach { grid-template-columns: 1.05fr .95fr; } }
+.reach__facts { border-top: 1px solid var(--rule); margin: 0; }
+.reach__facts div { padding-block: 1.05rem; border-bottom: 1px solid var(--rule-soft); }
+.reach__facts dt { color: var(--muted); margin-bottom: .2rem; }
+.reach__facts dd { margin: 0; color: var(--ink); font-weight: 500; }
+.reach__facts a { color: var(--teal); text-decoration: none; direction: ltr; unicode-bidi: isolate; }
+.reach__facts a:hover { text-decoration: underline; }
+
+/* ========================================================  FOOTER  ======= */
+.foot { background: var(--deep); color: rgba(255,255,255,.72); padding-block: clamp(2.8rem, 6vw, 4.2rem) 2rem; }
+.foot__grid { display: grid; gap: clamp(1.8rem, 4vw, 2.6rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+/* Four explicit tracks once there is room, so the Vision lockup takes its own
+   column instead of wrapping under the brand. */
+@media (min-width: 900px) { .foot__grid { grid-template-columns: 1.35fr 1.15fr 1fr .85fr; } }
+.foot h4 { color: #fff; margin: 0 0 1rem; font-family: var(--ui); font-weight: 600; font-size: .73rem; }
+html[lang="en"] .foot h4 { text-transform: uppercase; letter-spacing: .12em; }
+html[lang="ar"] .foot h4 { font-size: .85rem; }
+.foot a { text-decoration: none; color: rgba(255,255,255,.72); }
+.foot a:hover { color: #fff; text-decoration: underline; }
+.foot li + li { margin-top: .5rem; }
+.foot ul { font-size: .9rem; }
+.foot__brand img { height: 3.4rem; width: auto; margin-bottom: 1rem; }
+.foot__brand p { font-size: .89rem; color: rgba(255,255,255,.62); max-width: 32ch; }
+
+/* The Vision 2030 lockup has a transparent ground and grey artwork, so it sits
+   straight on the dark footer (its grey reads ~6.4:1 there) with no plaque. */
+.vision { width: 132px; height: auto; margin-top: -.6rem; }
+
+.foot__bottom {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1.5rem;
+  margin-top: clamp(2.2rem, 5vw, 3.2rem); padding-top: 1.4rem;
+  border-top: 1px solid rgba(255,255,255,.14);
+  font-family: var(--ui); font-size: .79rem; color: rgba(255,255,255,.6);
+}
+.foot__bottom .ltr { direction: ltr; unicode-bidi: isolate; }
+
+/* ========================================================  REVEAL  =======
+   Gated on .js, which the inline script in <head> sets. Without scripting the
+   rule never applies, so the page renders fully visible rather than leaving
+   every revealed section stuck at opacity 0. */
+.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main" data-i18n="skip">تخطَّ إلى المحتوى</a>
+
+<nav class="rail" aria-label="أقسام الصفحة" data-i18n-attr="aria-label" data-i18n="rail.aria">
+  <div class="rail__progress" id="railProgress"></div>
+  <a href="#ecosystem" data-rail="ecosystem"><span data-i18n="rail.ecosystem">المنظومة</span></a>
+  <a href="#platforms" data-rail="platforms"><span data-i18n="rail.platforms">المنصات</span></a>
+  <a href="#flow"      data-rail="flow"><span data-i18n="rail.flow">كيف تتكامل</span></a>
+  <a href="#reach"     data-rail="reach"><span data-i18n="rail.reach">لمن نقدّم خدماتنا</span></a>
+</nav>
+
+<div class="wrap">
+
+<header class="top" id="top">
+  <div class="container top__inner">
+    <a class="brand" href="#ecosystem">
+      <span class="brand__mark"><img src="./assets/logo-wisamtech-mark.png" alt="Wisam Tech"></span>
+      <b data-i18n="brand">وسام البيع التقني</b>
+    </a>
+
+    <nav class="nav" aria-label="التنقل الرئيسي" data-i18n-attr="aria-label" data-i18n="nav.aria">
+      <a href="#platforms" data-nav="platforms" data-i18n="nav.platforms">المنصات</a>
+      <a href="#flow"      data-nav="flow"      data-i18n="nav.flow">كيف تتكامل</a>
+      <a href="#reach"     data-nav="reach"     data-i18n="nav.reach">لمن نقدّم خدماتنا</a>
+    </nav>
+
+    <div class="top__actions">
+      <a class="top__mail" href="mailto:info@wisam.tech">info@wisam.tech</a>
+      <div class="langsw" role="group" aria-label="Language / اللغة">
+        <button type="button" data-setlang="ar" class="is-on">العربية</button>
+        <button type="button" data-setlang="en">English</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ==========================================================  HERO  === -->
+  <section class="hero" id="ecosystem">
+    <img class="hero__mark" src="./assets/logo-wisamtech-mark.png" alt="" aria-hidden="true">
+    <div class="container">
+      <p class="eyebrow label" data-i18n="hero.eyebrow">شركة وسام التقني — الملف التعريفي</p>
+      <h1 data-i18n="hero.title" data-i18n-html>سبع منصات، <em>سلسلة إمداد</em> واحدة.</h1>
+      <p class="hero__lead" data-i18n="hero.lead">
+        تبني شركة وسام التقني وتُشغّل منظومة متكاملة للتخليص الجمركي والنقل البري
+        والتخزين الذكي والتجارة بالجملة والتجزئة والتوصيل للميل الأخير. كل وظيفة
+        منها منصة قائمة بذاتها، ومجتمعةً تنقل الشحنة من ميناء الدخول حتى الباب
+        الأخير دون أن تغادر المنظومة.
+      </p>
+
+      <div class="tally">
+        <div>
+          <b>7</b>
+          <span data-i18n="tally.1">منصات تغطي التخليص والنقل والتخزين والتجارة والتوصيل</span>
+        </div>
+        <div>
+          <b>5</b>
+          <span data-i18n="tally.2">مراحل تمر بها الشحنة، تتولى كلاً منها منصة</span>
+        </div>
+        <div>
+          <b>1</b>
+          <span data-i18n="tally.3">سجل تشغيلي واحد، مشترك من البداية إلى النهاية</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================  PLATFORMS  === -->
+  <section class="sec sec--tint" id="platforms">
+    <div class="container">
+      <div class="sec__head reveal">
+        <p class="sec__index label" data-i18n="s1.index">01 — المنصات</p>
+        <h2 data-i18n="s1.h2">ست منصات تشغيلية، والطبقة التي تعمل عليها</h2>
+        <p data-i18n="s1.lead">
+          كل منصة مبنية لتعمل بشكل مستقل ولتُسلّم عملها بسلاسة إلى التي تليها.
+          وتتشارك جميعها كتالوجًا واحدًا للمنتجات والشركاء والمواقع، فتحتفظ الشحنة
+          بالهوية نفسها وهي تنتقل بينها.
+        </p>
+      </div>
+
+      <div class="platforms">
+
+        <article class="platform platform--lead reveal">
+          <div class="platform__icon">
+            <img src="./assets/logo-wisamtech-mark.png" alt="Wisam Tech">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.wisam.kicker">مُشغّل المنظومة</p>
+            <h3 data-i18n="p.wisam.name">شركة وسام التقني</h3>
+            <p class="platform__alt" data-alt-of="p.wisam.name"></p>
+            <p data-i18n="p.wisam.desc">
+              الشركة الأم، والطبقة التي تُبنى عليها المنصات الست الأخرى. تملك وسام
+              التقني الخدمات المشتركة التي تعتمد عليها جميعًا — البيانات الرئيسية،
+              وهوية الشركاء والمستخدمين، والسجلات التشغيلية، والتتبع والتقارير —
+              وتدير المنظومة كعملية واحدة لا كمجموعة منتجات منفصلة. وهي مصممة للعمل
+              على نطاق وطني ومهيأة للتوسع إقليميًا ودوليًا.
+            </p>
+            <ul class="tags" data-i18n="p.wisam.tags" data-i18n-html>
+              <li>البيانات الرئيسية المشتركة</li>
+              <li>هوية الشركاء والمستخدمين</li>
+              <li>السجل التشغيلي</li>
+              <li>التتبع والتقارير</li>
+              <li>تكامل المنصات</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-takhlees)">
+          <div class="platform__icon">
+            <img src="./assets/takhlees.png" alt="Takhlees">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.takhlees.kicker">التخليص الجمركي</p>
+            <h3 data-i18n="p.takhlees.name">منصة تخليص</h3>
+            <p class="platform__alt" data-alt-of="p.takhlees.name"></p>
+            <p data-i18n="p.takhlees.desc">
+              نقطة الدخول إلى المنظومة. تتولى تخليص الإقرارات الجمركية والإفراج عن
+              البضائع في الموانئ البحرية والجوية والمنافذ البرية — من التصنيف والرسوم
+              والضرائب إلى المستندات ومتابعة الفحص — ثم تُسلّم شحنة مُخلّصة وموصوفة
+              بالكامل مباشرةً إلى النقل.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.takhlees.tags" data-i18n-html>
+            <li>الإقرارات الجمركية</li>
+            <li>التصنيف الجمركي</li>
+            <li>الرسوم وضريبة القيمة المضافة</li>
+            <li>دورة المستندات</li>
+            <li>متابعة الإفراج</li>
+          </ul>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-tawseel)">
+          <div class="platform__icon">
+            <img src="./assets/tawseel.png" alt="Tawseel">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.tawseel.kicker">النقل البري</p>
+            <h3 data-i18n="p.tawseel.name">منصة توصيل</h3>
+            <p class="platform__alt" data-alt-of="p.tawseel.name"></p>
+            <p data-i18n="p.tawseel.desc">
+              النقل البري بين الموانئ والمنافذ والمستودعات والمصانع. تطابق المنصة
+              الحمولات مع السعة المتاحة، وتُصدر الرحلات وتراقبها، وتُبقي الشحنة مرئية
+              طوال الرحلة لا عند الاستلام والتسليم فقط.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.tawseel.tags" data-i18n-html>
+            <li>حمولات كاملة وجزئية</li>
+            <li>مطابقة الحمولات</li>
+            <li>إصدار الرحلات</li>
+            <li>تتبع لحظي</li>
+            <li>إثبات التسليم</li>
+          </ul>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-takhzeen)">
+          <div class="platform__icon">
+            <img src="./assets/takhzeen.png" alt="Takhzeen">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.takhzeen.kicker">التخزين الذكي</p>
+            <h3 data-i18n="p.takhzeen.name">منصة تخزين</h3>
+            <p class="platform__alt" data-alt-of="p.takhzeen.name"></p>
+            <p data-i18n="p.takhzeen.desc">
+              تخزين يعرف ما بداخله. تدير المنصة الاستلام والتخزين والجرد على مستوى
+              الموقع داخل المستودع والتجهيز، وتعمل كمخزون مشترك تبيع منه منصتا الجملة
+              والتجزئة معًا.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.takhzeen.tags" data-i18n-html>
+            <li>الاستلام والتخزين</li>
+            <li>جرد على مستوى الموقع</li>
+            <li>الجرد الدوري</li>
+            <li>التجهيز والتغليف</li>
+            <li>وضوح المخزون</li>
+          </ul>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-tawfir)">
+          <div class="platform__icon">
+            <img src="./assets/tawfir.png" alt="Tawfir">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.tawfir.kicker">التجارة بالجملة</p>
+            <h3 data-i18n="p.tawfir.name">منصة توفير</h3>
+            <p class="platform__alt" data-alt-of="p.tawfir.name"></p>
+            <p data-i18n="p.tawfir.desc">
+              سوق البيع بالجملة. تضع المنصة المصانع والمستوردين وأصحاب الوكالات
+              والموردين أمام المشترين من المنشآت — تجار التجزئة والبقالات وقطاع
+              الأغذية — عبر كتالوجات وأسعار جملة وأوامر شراء تنتقل مباشرةً إلى التنفيذ.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.tawfir.tags" data-i18n-html>
+            <li>كتالوج الجملة</li>
+            <li>تسعير متدرج</li>
+            <li>أوامر الشراء</li>
+            <li>حسابات الموردين</li>
+            <li>تنفيذ الطلبات</li>
+          </ul>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-express)">
+          <div class="platform__icon">
+            <img src="./assets/tawseel-express.png" alt="Tawseel Express">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.express.kicker">التوصيل السريع</p>
+            <h3 data-i18n="p.express.name">منصة توصيل إكسبريس</h3>
+            <p class="platform__alt" data-alt-of="p.express.name"></p>
+            <p data-i18n="p.express.desc">
+              المرحلة الأخيرة. تُشغّل المنصة التوصيل داخل المدن وفي اليوم نفسه حتى باب
+              العميل، فتُسند المناديب وترتّب المسارات وتُبلّغ عن كل عملية تسليم
+              بالرجوع إلى الطلب الذي نشأت عنه.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.express.tags" data-i18n-html>
+            <li>التوصيل في اليوم نفسه</li>
+            <li>إسناد المناديب</li>
+            <li>ترتيب المسارات</li>
+            <li>تتبع لحظي</li>
+            <li>تأكيد التسليم</li>
+          </ul>
+        </article>
+
+        <article class="platform reveal" style="--hue: var(--p-tawfiry)">
+          <div class="platform__icon">
+            <img src="./assets/tawfiry.png" alt="Tawfiry">
+          </div>
+          <div class="platform__body">
+            <p class="platform__kicker label" data-i18n="p.tawfiry.kicker">التجارة بالتجزئة</p>
+            <h3 data-i18n="p.tawfiry.name">منصة توفيري</h3>
+            <p class="platform__alt" data-alt-of="p.tawfiry.name"></p>
+            <p data-i18n="p.tawfiry.desc">
+              واجهة البيع للمستهلك للأغذية والسلع اليومية. تبيع المنصة من المخزون
+              نفسه الذي تحفظه منصة تخزين، وتُسلّم كل طلب إلى توصيل إكسبريس، فيستمد
+              الطلب الاستهلاكي إمداده من داخل المنظومة لا من خارجها.
+            </p>
+          </div>
+          <ul class="tags" data-i18n="p.tawfiry.tags" data-i18n-html>
+            <li>متجر للمستهلك</li>
+            <li>مخزون مشترك</li>
+            <li>إدارة الطلبات</li>
+            <li>تسليم إلى التوصيل</li>
+            <li>المرتجعات</li>
+          </ul>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================  FLOW  === -->
+  <section class="sec sec--rule" id="flow">
+    <div class="container">
+      <div class="sec__head reveal">
+        <p class="sec__index label" data-i18n="s2.index">02 — كيف تتكامل</p>
+        <h2 data-i18n="s2.h2">شحنة واحدة، خمس عمليات تسليم</h2>
+        <p data-i18n="s2.lead">
+          تظهر قيمة المنصات أكثر ما تظهر حين تعمل بالتسلسل. هذا هو المسار الذي
+          تسلكه الشحنة بينها، والنقطة التي تتسلم عندها كل منصة دورها.
+        </p>
+      </div>
+
+      <ol class="flow reveal">
+        <li class="flow__step" style="--hue: var(--p-takhlees)">
+          <span class="flow__num">01</span>
+          <h3 data-i18n="f1.h">التخليص</h3>
+          <p class="flow__owner label" data-i18n="f1.o">منصة تخليص</p>
+          <p data-i18n="f1.p">تصل البضائع إلى ميناء أو منفذ. يُقدَّم الإقرار الجمركي، وتُسدَّد الرسوم، ويُفرج عن الشحنة.</p>
+        </li>
+        <li class="flow__step" style="--hue: var(--p-tawseel)">
+          <span class="flow__num">02</span>
+          <h3 data-i18n="f2.h">النقل</h3>
+          <p class="flow__owner label" data-i18n="f2.o">منصة توصيل</p>
+          <p data-i18n="f2.p">تُطابَق الحمولة المُخلّصة مع مركبة وتُنقل برًا إلى الداخل، مع تتبعها طوال الرحلة.</p>
+        </li>
+        <li class="flow__step" style="--hue: var(--p-takhzeen)">
+          <span class="flow__num">03</span>
+          <h3 data-i18n="f3.h">التخزين</h3>
+          <p class="flow__owner label" data-i18n="f3.o">منصة تخزين</p>
+          <p data-i18n="f3.p">يُستلم المخزون ويُخزَّن ويُجرد على مستوى الموقع، ثم يصبح متاحًا للبيع عبر منصتي التجارة.</p>
+        </li>
+        <li class="flow__step" style="--hue: var(--p-tawfir)">
+          <span class="flow__num">04</span>
+          <h3 data-i18n="f4.h">التجارة</h3>
+          <p class="flow__owner label" data-i18n="f4.o">منصتا توفير وتوفيري</p>
+          <p data-i18n="f4.p">يُباع المخزون نفسه بالجملة للمنشآت وبالتجزئة للمستهلكين، من وضع مخزون واحد.</p>
+        </li>
+        <li class="flow__step" style="--hue: var(--p-express)">
+          <span class="flow__num">05</span>
+          <h3 data-i18n="f5.h">التوصيل</h3>
+          <p class="flow__owner label" data-i18n="f5.o">منصة توصيل إكسبريس</p>
+          <p data-i18n="f5.p">تخرج الطلبات في مرحلتها الأخيرة، ويُبلَّغ عن كل تسليم بالرجوع إلى الطلب الذي أنشأه.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =========================================================  REACH  === -->
+  <section class="sec sec--tint" id="reach">
+    <div class="container">
+      <div class="sec__head reveal">
+        <p class="sec__index label" data-i18n="s4.index">03 — لمن نقدّم خدماتنا</p>
+        <h2 data-i18n="s4.h2">مبنية للمنشآت التي تحرّك البضائع</h2>
+        <p data-i18n="s4.lead">
+          صُممت المنظومة للشركات المحلية والدولية والمصانع وأصحاب الوكالات والموردين
+          الذين يحتاجون إلى إدارة عملياتهم بكفاءة ووضوح، وبمستوى عالٍ من الموثوقية
+          التشغيلية.
+        </p>
+      </div>
+
+      <div class="reach">
+        <div class="reveal">
+          <ul class="sectors" data-i18n="sectors" data-i18n-html>
+            <li>المصانع</li>
+            <li>المستوردون والمصدّرون</li>
+            <li>أصحاب الوكالات</li>
+            <li>تجار الجملة والموزعون</li>
+            <li>تجار التجزئة والبقالات</li>
+            <li>قطاع الأغذية</li>
+            <li>بائعو التجارة الإلكترونية</li>
+            <li>الموردون</li>
+          </ul>
+        </div>
+
+        <dl class="reach__facts reveal">
+          <div>
+            <dt class="label" data-i18n="facts.1.t">الشركة</dt>
+            <dd data-i18n="facts.1.d">شركة وسام التقني — شركة وسام البيع التقني</dd>
+          </div>
+          <div>
+            <dt class="label" data-i18n="facts.2.t">المنظومة</dt>
+            <dd data-i18n="facts.2.d">تخليص جمركي · نقل بري · تخزين · بيع بالجملة · بيع بالتجزئة · توصيل للميل الأخير</dd>
+          </div>
+          <div>
+            <dt class="label" data-i18n="facts.3.t">النطاق</dt>
+            <dd data-i18n="facts.3.d">وطني، ومهيأ للتوسع إقليميًا ودوليًا</dd>
+          </div>
+          <div>
+            <dt class="label" data-i18n="facts.4.t">للاستفسارات</dt>
+            <dd><a href="mailto:info@wisam.tech">info@wisam.tech</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="container">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <img src="./assets/logo-wisamtech-mark.png" alt="Wisam Tech">
+        <p data-i18n="foot.tag">منظومة متكاملة للخدمات اللوجستية والتجارة، تُدار كنظام واحد.</p>
+      </div>
+
+      <div>
+        <h4 data-i18n="foot.h.platforms">المنصات</h4>
+        <ul data-i18n="foot.platforms" data-i18n-html>
+          <li><a href="#platforms">منصة تخليص — التخليص الجمركي</a></li>
+          <li><a href="#platforms">منصة توصيل — النقل البري</a></li>
+          <li><a href="#platforms">منصة تخزين — التخزين الذكي</a></li>
+          <li><a href="#platforms">منصة توفير — التجارة بالجملة</a></li>
+          <li><a href="#platforms">منصة توصيل إكسبريس — التوصيل السريع</a></li>
+          <li><a href="#platforms">منصة توفيري — التجارة بالتجزئة</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="foot.h.page">هذه الصفحة</h4>
+        <ul data-i18n="foot.page" data-i18n-html>
+          <li><a href="#ecosystem">المنظومة</a></li>
+          <li><a href="#platforms">المنصات</a></li>
+          <li><a href="#flow">كيف تتكامل</a></li>
+          <li><a href="#reach">لمن نقدّم خدماتنا</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 data-i18n="foot.h.vision">بالتوافق مع</h4>
+        <img class="vision" src="./assets/vision2030.png"
+             alt="رؤية السعودية 2030" data-i18n="vision.alt" data-i18n-attr="alt">
+      </div>
+    </div>
+
+    <div class="foot__bottom">
+      <span data-i18n="foot.copy">© 2026 شركة وسام التقني — شركة وسام البيع التقني</span>
+      <span class="ltr">info@wisam.tech</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /.wrap -->
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================  I18N  ======
+     Arabic is the document's own language: it is written into the markup, so
+     the page is complete and correct with JavaScript switched off. English
+     lives in the table below. The Arabic strings are snapshotted from the DOM
+     on load, which keeps them in exactly one place.
+     ---------------------------------------------------------------------- */
+  var EN = {
+    "skip": "Skip to content",
+    "brand": "Wisam Tech",
+    "rail.aria": "Page sections",
+    "rail.ecosystem": "Ecosystem",
+    "rail.platforms": "Platforms",
+    "rail.flow": "How it connects",
+    "rail.reach": "Who it serves",
+    "nav.aria": "Primary",
+    "nav.platforms": "Platforms",
+    "nav.flow": "How it connects",
+    "nav.reach": "Who it serves",
+
+    "hero.eyebrow": "Wisam Tech Co. — Company Profile",
+    "hero.title": "Seven platforms, <em>one</em> supply chain.",
+    "hero.lead": "Wisam Tech builds and operates an integrated ecosystem for customs clearance, land freight, smart warehousing, wholesale and retail commerce, and last-mile delivery. Each function is its own platform. Together they carry a consignment from the port of entry to the final door without it ever leaving the system.",
+    "tally.1": "Platforms across clearance, freight, storage, trade and delivery",
+    "tally.2": "Stages a consignment passes through, each owned by a platform",
+    "tally.3": "Operational record, shared from end to end",
+
+    "s1.index": "01 — The platforms",
+    "s1.h2": "Six operating platforms, and the layer they run on",
+    "s1.lead": "Every platform is built to stand on its own and to hand off cleanly to the next. They share one catalogue of products, partners and locations, so a consignment keeps the same identity as it moves between them.",
+
+    "p.wisam.kicker": "Ecosystem operator",
+    "p.wisam.name": "Wisam Technology Co.",
+    "p.wisam.desc": "The parent company, and the layer the other six platforms are built on. Wisam Tech owns the shared services they all draw from — master data, partner and user identity, operational records, tracking and reporting — and runs the ecosystem as a single operation rather than a set of separate products. It is designed to work at national scale and structured for regional and international expansion.",
+    "p.wisam.tags": "<li>Shared master data</li><li>Partner &amp; user identity</li><li>Operational record</li><li>Tracking &amp; reporting</li><li>Platform integration</li>",
+
+    "p.takhlees.kicker": "Customs clearance",
+    "p.takhlees.name": "Takhlees",
+    "p.takhlees.desc": "The entry point to the ecosystem. Takhlees handles the declaration and release of goods at seaports, airports and land borders — classification, duties and tax, documentation and inspection follow-up — then passes a cleared, fully described consignment straight to freight.",
+    "p.takhlees.tags": "<li>Declarations</li><li>HS classification</li><li>Duty &amp; VAT</li><li>Document workflow</li><li>Release tracking</li>",
+
+    "p.tawseel.kicker": "Land freight",
+    "p.tawseel.name": "Tawseel",
+    "p.tawseel.desc": "Road transport between ports, borders, warehouses and plants. Tawseel matches loads to available capacity, dispatches and monitors trips, and keeps the consignment visible for the whole run rather than only at collection and delivery.",
+    "p.tawseel.tags": "<li>Full &amp; part loads</li><li>Load matching</li><li>Trip dispatch</li><li>Live tracking</li><li>Proof of delivery</li>",
+
+    "p.takhzeen.kicker": "Smart warehousing",
+    "p.takhzeen.name": "Takhzeen",
+    "p.takhzeen.desc": "Storage that knows what it holds. Takhzeen manages receiving, put-away, bin-level stock and picking, and acts as the shared inventory pool that both the wholesale and the retail platform sell from.",
+    "p.takhzeen.tags": "<li>Inbound &amp; put-away</li><li>Bin-level stock</li><li>Cycle counting</li><li>Pick &amp; pack</li><li>Stock visibility</li>",
+
+    "p.tawfir.kicker": "B2B wholesale",
+    "p.tawfir.name": "Tawfir",
+    "p.tawfir.desc": "The wholesale marketplace. Tawfir puts manufacturers, importers, agency holders and suppliers in front of business buyers — retailers, grocers and food service — with catalogues, wholesale pricing and purchase orders that pass straight into fulfilment.",
+    "p.tawfir.tags": "<li>Wholesale catalogue</li><li>Tiered pricing</li><li>Purchase orders</li><li>Supplier accounts</li><li>Order fulfilment</li>",
+
+    "p.express.kicker": "Last-mile delivery",
+    "p.express.name": "Tawseel Express",
+    "p.express.desc": "The final leg. Tawseel Express runs urban and same-day delivery out to the customer's door, assigning riders, sequencing routes and reporting each drop back against the order that raised it.",
+    "p.express.tags": "<li>Same-day delivery</li><li>Rider dispatch</li><li>Route sequencing</li><li>Live tracking</li><li>Delivery confirmation</li>",
+
+    "p.tawfiry.kicker": "B2C retail",
+    "p.tawfiry.name": "Tawfiry",
+    "p.tawfiry.desc": "The consumer storefront for food and everyday goods. Tawfiry sells from the same stock Takhzeen holds and hands each order to Tawseel Express, so retail demand draws on the ecosystem's own supply rather than a separate one.",
+    "p.tawfiry.tags": "<li>Consumer storefront</li><li>Shared inventory</li><li>Order management</li><li>Delivery hand-off</li><li>Returns</li>",
+
+    "s2.index": "02 — How it connects",
+    "s2.h2": "One consignment, five hand-offs",
+    "s2.lead": "The platforms are most useful in sequence. This is the path a consignment takes through them, and the point at which each one takes over.",
+    "f1.h": "Clear",   "f1.o": "Takhlees",
+    "f1.p": "Goods arrive at a port or border. The declaration is filed, duties are settled and the consignment is released.",
+    "f2.h": "Move",    "f2.o": "Tawseel",
+    "f2.p": "The cleared load is matched to a vehicle and carried inland by road, tracked for the whole trip.",
+    "f3.h": "Store",   "f3.o": "Takhzeen",
+    "f3.p": "Stock is received, put away and counted at bin level, then made sellable through both trade platforms.",
+    "f4.h": "Trade",   "f4.o": "Tawfir & Tawfiry",
+    "f4.p": "The same inventory is sold wholesale to businesses and retail to consumers, from one stock position.",
+    "f5.h": "Deliver", "f5.o": "Tawseel Express",
+    "f5.p": "Orders go out on the final leg, and each drop is reported back against the order that raised it.",
+
+    "s4.index": "03 — Who it serves",
+    "s4.h2": "Built for the businesses that move goods",
+    "s4.lead": "The ecosystem is designed for local and international companies, manufacturers, agency holders and suppliers that need their operations to run efficiently and visibly, at a high level of operational reliability.",
+    "sectors":
+      "<li>Manufacturers</li><li>Importers &amp; exporters</li><li>Agency holders</li>" +
+      "<li>Wholesalers &amp; distributors</li><li>Retailers &amp; grocers</li><li>Food service</li>" +
+      "<li>E-commerce sellers</li><li>Suppliers</li>",
+    "facts.1.t": "Company",  "facts.1.d": "Wisam Technology Co. — Wisam Technical Sales Co.",
+    "facts.2.t": "Ecosystem","facts.2.d": "Customs clearance · Land freight · Warehousing · Wholesale · Retail · Last-mile",
+    "facts.3.t": "Scale",    "facts.3.d": "National, built for regional and international expansion",
+    "facts.4.t": "Enquiries",
+
+    "foot.tag": "An integrated logistics and commerce ecosystem, operated as one system.",
+    "foot.h.platforms": "Platforms",
+    "foot.platforms":
+      '<li><a href="#platforms">Takhlees — Customs clearance</a></li>' +
+      '<li><a href="#platforms">Tawseel — Land freight</a></li>' +
+      '<li><a href="#platforms">Takhzeen — Smart warehousing</a></li>' +
+      '<li><a href="#platforms">Tawfir — B2B wholesale</a></li>' +
+      '<li><a href="#platforms">Tawseel Express — Last-mile delivery</a></li>' +
+      '<li><a href="#platforms">Tawfiry — B2C retail</a></li>',
+    "foot.h.page": "This page",
+    "foot.page":
+      '<li><a href="#ecosystem">Ecosystem</a></li>' +
+      '<li><a href="#platforms">Platforms</a></li>' +
+      '<li><a href="#flow">How it connects</a></li>' +
+      '<li><a href="#reach">Who it serves</a></li>',
+    "foot.h.vision": "Aligned with",
+    "vision.alt": "Saudi Vision 2030",
+    "foot.copy": "© 2026 Wisam Tech Co. — Wisam Technical Sales Co."
+  };
+
+  var TITLE = { ar: "شركة وسام التقني | المنصات", en: "Wisam Tech Co. | The Platforms" };
+
+  var nodes = Array.prototype.slice.call(document.querySelectorAll("[data-i18n]"));
+  var altNodes = Array.prototype.slice.call(document.querySelectorAll("[data-alt-of]"));
+  var AR = {};
+
+  nodes.forEach(function (el) {
+    var key = el.getAttribute("data-i18n");
+    var attr = el.getAttribute("data-i18n-attr");
+    if (attr) { AR[key] = el.getAttribute(attr); }
+    else if (el.hasAttribute("data-i18n-html")) { AR[key] = el.innerHTML; }
+    else { AR[key] = el.textContent.replace(/\s+/g, " ").trim(); }
+  });
+
+  function applyLang(lang) {
+    var dict = lang === "en" ? EN : AR;
+
+    nodes.forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      var value = dict[key];
+      if (value == null) { return; }           // missing English falls back to Arabic
+      var attr = el.getAttribute("data-i18n-attr");
+      if (attr) { el.setAttribute(attr, value); }
+      else if (el.hasAttribute("data-i18n-html")) { el.innerHTML = value; }
+      else { el.textContent = value; }
+    });
+
+    // Each platform shows its name in the OTHER language underneath.
+    altNodes.forEach(function (el) {
+      var key = el.getAttribute("data-alt-of");
+      var other = lang === "en" ? AR[key] : EN[key];
+      if (other == null) { return; }
+      // <bdi> isolates the foreign-script name and derives its direction from
+      // its own content, so a trailing "." stays at the end of the Latin run
+      // instead of jumping to the far margin. The paragraph itself keeps the
+      // page direction, so the line still aligns to the page's reading edge.
+      var bdi = document.createElement("bdi");
+      bdi.textContent = other;
+      bdi.setAttribute("lang", lang === "en" ? "ar" : "en");
+      el.textContent = "";
+      el.appendChild(bdi);
+    });
+
+    document.documentElement.setAttribute("lang", lang);
+    document.documentElement.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+    document.title = TITLE[lang];
+
+    Array.prototype.forEach.call(document.querySelectorAll("[data-setlang]"), function (b) {
+      var on = b.getAttribute("data-setlang") === lang;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+
+    try { localStorage.setItem("wisam_lang", lang); } catch (e) { /* private mode */ }
+  }
+
+  function initialLang() {
+    var fromUrl = new URLSearchParams(window.location.search).get("lang");
+    if (fromUrl === "ar" || fromUrl === "en") { return fromUrl; }
+    try {
+      var saved = localStorage.getItem("wisam_lang");
+      if (saved === "ar" || saved === "en") { return saved; }
+    } catch (e) { /* private mode */ }
+    return "ar";
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-setlang]"), function (b) {
+    b.addEventListener("click", function () { applyLang(b.getAttribute("data-setlang")); });
+  });
+
+  applyLang(initialLang());
+
+  /* ---- sticky header hairline ------------------------------------------ */
+  var top = document.getElementById("top");
+  function onScrollTop() { top.classList.toggle("is-stuck", window.scrollY > 8); }
+  onScrollTop();
+  window.addEventListener("scroll", onScrollTop, { passive: true });
+
+  /* ---- reveal on entry -------------------------------------------------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    Array.prototype.forEach.call(reveals, function (el) { el.classList.add("is-visible"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-visible"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    Array.prototype.forEach.call(reveals, function (el) { io.observe(el); });
+  }
+
+  /* ---- scroll spy: rail dots, nav underline, progress bar ---------------- */
+  var ids = ["ecosystem", "platforms", "flow", "reach"];
+  var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  var railLinks = document.querySelectorAll(".rail a");
+  var navLinks = document.querySelectorAll(".nav a");
+  var progress = document.getElementById("railProgress");
+  var ticking = false;
+
+  function mark(list, attr, id) {
+    Array.prototype.forEach.call(list, function (a) {
+      a.classList.toggle("is-active", a.getAttribute(attr) === id);
+    });
+  }
+
+  function spy() {
+    ticking = false;
+
+    // the section whose top has most recently crossed the reading line
+    var line = window.scrollY + window.innerHeight * 0.32;
+    var current = sections[0];
+    sections.forEach(function (s) { if (s.offsetTop <= line) { current = s; } });
+    if (current) {
+      mark(railLinks, "data-rail", current.id);
+      mark(navLinks, "data-nav", current.id);
+    }
+
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.height = (scrollable > 0 ? Math.min(1, window.scrollY / scrollable) * 100 : 0) + "%";
+  }
+
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }
+  spy();
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+})();
+</script>
+
+</body>
+</html>
