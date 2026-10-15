@@ -89,6 +89,77 @@
 
   applyLang(initialLang());
 
+  /* ---- hero slideshow ----------------------------------------------------
+     The timer is the active dot's fill animation (see style.css): when it
+     ends, the next slide comes up. Pausing — by the button, by hovering, or
+     by tabbing into the controls — only has to freeze that animation.
+     With reduced motion the slideshow starts paused; the arrows still work.
+     ---------------------------------------------------------------------- */
+  var hero = document.getElementById("ecosystem");
+  var slideBox = document.getElementById("heroSlides");
+  var slides = Array.prototype.slice.call(hero.querySelectorAll(".slide"));
+  var dotBox = document.getElementById("heroDots");
+  var dots = Array.prototype.slice.call(dotBox.querySelectorAll(".hero__dot"));
+  var pauseBtn = document.getElementById("heroPause");
+  var currentSlide = 0;
+  var paused = false;
+
+  function isRtl() { return document.documentElement.getAttribute("dir") === "rtl"; }
+
+  function go(i) {
+    currentSlide = (i + slides.length) % slides.length;
+    slides.forEach(function (s, n) { s.classList.toggle("is-active", n === currentSlide); });
+    dots.forEach(function (d, n) {
+      var on = n === currentSlide;
+      d.classList.toggle("is-active", on);
+      if (on) { d.setAttribute("aria-current", "true"); } else { d.removeAttribute("aria-current"); }
+    });
+  }
+
+  function setPaused(p) {
+    paused = p;
+    hero.classList.toggle("is-paused", p);
+    // swap the key too, so a later language switch keeps the right label
+    var key = p ? "hero.play" : "hero.pause";
+    pauseBtn.setAttribute("data-i18n", key);
+    pauseBtn.setAttribute("aria-label", t(document.documentElement.lang, key));
+    // announce slide changes only when the visitor is driving them
+    slideBox.setAttribute("aria-live", p ? "polite" : "off");
+  }
+
+  slides.forEach(function (s, n) { s.setAttribute("aria-label", (n + 1) + " / " + slides.length); });
+  dots.forEach(function (d, n) { d.addEventListener("click", function () { go(n); }); });
+  document.getElementById("heroPrev").addEventListener("click", function () { go(currentSlide - 1); });
+  document.getElementById("heroNext").addEventListener("click", function () { go(currentSlide + 1); });
+  pauseBtn.addEventListener("click", function () { setPaused(!paused); });
+
+  dotBox.addEventListener("animationend", function (e) {
+    if (e.animationName === "hero-fill" && !paused) { go(currentSlide + 1); }
+  });
+
+  // arrow keys inside the controls follow the reading direction
+  hero.querySelector(".hero__controls").addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") { return; }
+    var forward = (e.key === "ArrowRight") !== isRtl();
+    go(currentSlide + (forward ? 1 : -1));
+    e.preventDefault();
+  });
+
+  // swipe on touch screens
+  var touchX = null;
+  slideBox.addEventListener("touchstart", function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  slideBox.addEventListener("touchend", function (e) {
+    if (touchX === null) { return; }
+    var dx = e.changedTouches[0].clientX - touchX;
+    touchX = null;
+    if (Math.abs(dx) < 50) { return; }
+    go(currentSlide + ((dx < 0) !== isRtl() ? 1 : -1));
+  }, { passive: true });
+
+  hero.querySelector(".hero__controls").hidden = false;
+  go(0);
+  setPaused(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+
   /* ---- sticky header hairline ------------------------------------------ */
   var top = document.getElementById("top");
   function onScrollTop() { top.classList.toggle("is-stuck", window.scrollY > 8); }

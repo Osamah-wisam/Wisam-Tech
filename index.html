@@ -71,29 +71,130 @@
 <main id="main">
 
   <!-- ==========================================================  HERO  === -->
-  <section class="hero" id="ecosystem">
-    <img class="hero__mark" src="./assets/logo-wisamtech-mark.png" alt="" aria-hidden="true">
-    <div class="container">
-      <p class="eyebrow label" data-i18n="hero.eyebrow">شركة وسام البيع التقني — الملف التعريفي</p>
-      <h1 data-i18n="hero.title" data-i18n-html>سبع منصات، <em>سلسلة إمداد</em> واحدة.</h1>
-      <p class="hero__lead" data-i18n="hero.lead">
- تعمل شركة وسام البيع التقني على بناء وتشغيل منظومة متكاملة تغطي مختلف مراحل سلسلة الإمداد، بدءًا من التخليص الجمركي والنقل البري، مرورًا بالتخزين الذكي والبيع بالجملة والتجزئة، وصولًا إلى التوصيل للعميل الأخير. وتعمل كل وظيفة من هذه الوظائف كمنصة مستقلة ومتكاملة، تتكامل فيما بينها لتوفير رحلة لوجستية متكاملة تنقل الشحنة من ميناء الدخول وحتى باب العميل النهائي، دون الحاجة إلى خروجها من منظومة الشركة.
-      </p>
+  <!-- A slideshow: the company first, then one slide per platform. Photos live
+       in assets/hero/ — replace a file with the same name to swap a picture. -->
+  <section class="hero" id="ecosystem" aria-roledescription="carousel"
+           aria-label="شركة وسام البيع التقني" data-i18n="hero.carousel" data-i18n-attr="aria-label">
 
-      <div class="tally">
-        <div>
-          <b>7</b>
-          <span data-i18n="tally.1">منصات تغطي التخليص والنقل والتخزين والبيع والتوصيل</span>
-        </div>
-        <div>
-          <b>5</b>
-          <span data-i18n="tally.2">مراحل تمر بها الشحنة، تتولى كلاً منها منصة</span>
-        </div>
-        <div>
-          <b>1</b>
-          <span data-i18n="tally.3">سجل تشغيلي واحد، مشترك من البداية إلى النهاية</span>
+    <div class="hero__slides" id="heroSlides" aria-live="off">
+
+      <!-- 1 — the company -->
+      <div class="slide slide--profile is-active" role="group" aria-roledescription="slide">
+        <img class="slide__img" src="./assets/hero/profile.jpg" alt="" fetchpriority="high">
+        <div class="container slide__body">
+          <p class="eyebrow label" data-i18n="hero.eyebrow">شركة وسام البيع التقني — الملف التعريفي</p>
+          <h1 data-i18n="hero.title" data-i18n-html>سبع منصات، <em>سلسلة إمداد</em> واحدة.</h1>
+          <p class="hero__lead" data-i18n="hero.lead">
+ تعمل شركة وسام البيع التقني على بناء وتشغيل منظومة متكاملة تغطي مختلف مراحل سلسلة الإمداد، بدءًا من التخليص الجمركي والنقل البري، مرورًا بالتخزين الذكي والبيع بالجملة والتجزئة، وصولًا إلى التوصيل للعميل الأخير. وتعمل كل وظيفة من هذه الوظائف كمنصة مستقلة ومتكاملة، تتكامل فيما بينها لتوفير رحلة لوجستية متكاملة تنقل الشحنة من ميناء الدخول وحتى باب العميل النهائي، دون الحاجة إلى خروجها من منظومة الشركة.
+          </p>
         </div>
       </div>
+
+      <!-- 2…7 — one per platform -->
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-takhlees)">
+        <img class="slide__img" src="./assets/hero/takhlees.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/takhlees.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.takhlees.kicker">التخليص الجمركي</p>
+          </div>
+          <p class="slide__title" data-i18n="p.takhlees.name">منصة تخليص</p>
+          <p class="slide__line" data-i18n="slide.takhlees">تخليص الإقرارات الجمركية والإفراج عن البضائع في الموانئ والمنافذ.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-tawseel)">
+        <img class="slide__img" src="./assets/hero/tawseel.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/tawseel.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.tawseel.kicker">النقل البري</p>
+          </div>
+          <p class="slide__title" data-i18n="p.tawseel.name">منصة توصيل</p>
+          <p class="slide__line" data-i18n="slide.tawseel">نقل بري بين الموانئ والمستودعات والمصانع، مع تتبع الشحنة طوال الرحلة.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-takhzeen)">
+        <img class="slide__img" src="./assets/hero/takhzeen.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/takhzeen.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.takhzeen.kicker">التخزين الذكي</p>
+          </div>
+          <p class="slide__title" data-i18n="p.takhzeen.name">منصة تخزين</p>
+          <p class="slide__line" data-i18n="slide.takhzeen">تخزين مُدار يعرف ما بداخله، ومخزون جاهز للبيع مباشرةً.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-tawfir)">
+        <img class="slide__img" src="./assets/hero/tawfir.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/tawfir.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.tawfir.kicker">البيع بالجملة</p>
+          </div>
+          <p class="slide__title" data-i18n="p.tawfir.name">منصة توفير</p>
+          <p class="slide__line" data-i18n="slide.tawfir">سوق جملة يضع الموردين والمصانع أمام المنشآت المشترية.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-express)">
+        <img class="slide__img" src="./assets/hero/express.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/tawseel-express.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.express.kicker">التوصيل السريع</p>
+          </div>
+          <p class="slide__title" data-i18n="p.express.name">منصة توصيل إكسبريس</p>
+          <p class="slide__line" data-i18n="slide.express">توصيل في اليوم نفسه حتى باب العميل.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" style="--hue: var(--p-tawfiry)">
+        <img class="slide__img" src="./assets/hero/tawfiry.jpg" alt="" decoding="async" fetchpriority="low">
+        <div class="container slide__body">
+          <div class="slide__brand">
+            <span class="slide__icon"><img src="./assets/tawfiry.png" alt=""></span>
+            <p class="slide__kicker label" data-i18n="p.tawfiry.kicker">البيع بالتجزئة</p>
+          </div>
+          <p class="slide__title" data-i18n="p.tawfiry.name">منصة توفيري</p>
+          <p class="slide__line" data-i18n="slide.tawfiry">متجر للأغذية والسلع اليومية، يصل طلبك إلى باب منزلك.</p>
+          <a class="slide__more" href="#platforms" data-i18n="hero.more">تعرّف على المنصات</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- controls: built for keyboard and screen readers, hidden without JS -->
+    <div class="hero__controls container" hidden>
+      <button type="button" class="hero__btn hero__pause" id="heroPause"
+              aria-label="إيقاف العرض" data-i18n="hero.pause" data-i18n-attr="aria-label">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="i-pause"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="i-play"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="hero__dots" id="heroDots">
+        <button type="button" class="hero__dot" aria-label="الملف التعريفي" data-i18n="hero.dot.profile" data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة تخليص"         data-i18n="p.takhlees.name" data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة توصيل"         data-i18n="p.tawseel.name"  data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة تخزين"         data-i18n="p.takhzeen.name" data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة توفير"         data-i18n="p.tawfir.name"   data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة توصيل إكسبريس" data-i18n="p.express.name"  data-i18n-attr="aria-label"></button>
+        <button type="button" class="hero__dot" aria-label="منصة توفيري"        data-i18n="p.tawfiry.name"  data-i18n-attr="aria-label"></button>
+      </div>
+      <button type="button" class="hero__btn hero__prev" id="heroPrev"
+              aria-label="الشريحة السابقة" data-i18n="hero.prev" data-i18n-attr="aria-label">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>
+      </button>
+      <button type="button" class="hero__btn hero__next" id="heroNext"
+              aria-label="الشريحة التالية" data-i18n="hero.next" data-i18n-attr="aria-label">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+      </button>
     </div>
   </section>
 

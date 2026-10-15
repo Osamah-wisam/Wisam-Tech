@@ -168,39 +168,37 @@ html[lang="ar"] .label { letter-spacing: 0; font-size: .82rem; }
   transition: border-color .3s;
 }
 .top.is-stuck { border-bottom-color: var(--rule); }
-.top__inner { display: flex; align-items: center; gap: .8rem; min-height: 70px; }
+/* At the top of the page the bar is tall and the logo large, sitting fully
+   inside it. Once the page scrolls (.is-stuck, set in main.js) the bar, the
+   logo and the wordmark all ease down to a compact size together. */
+.top {
+  --bar: 76px;  --mark: 3.1rem;
+  --bar-stuck: 60px; --mark-stuck: 2.2rem;
+}
+@media (min-width: 760px) {
+  .top { --bar: 100px; --mark: 4.4rem; --bar-stuck: 68px; --mark-stuck: 2.5rem; }
+}
+.top__inner {
+  display: flex; align-items: center; gap: .8rem; min-height: var(--bar);
+  transition: min-height .4s cubic-bezier(.22,1,.36,1);
+}
+.top.is-stuck .top__inner { min-height: var(--bar-stuck); }
 
-.brand { display: inline-flex; align-items: center; gap: .55rem; text-decoration: none; flex: none; }
+.brand { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; flex: none; }
 
-/* The mark keeps a fixed 2.25rem footprint in the bar, but the image inside it
-   is positioned rather than in flow — so while the page sits at the top it can
-   grow past the header's lower edge and hang down into the hero without making
-   the bar itself any taller. It is anchored to the top of that footprint so it
-   only ever grows downward, and tucks back to bar size once the header sticks.
-   html/body use overflow-x: clip rather than hidden precisely so this vertical
-   overhang is not cropped. */
-.brand__mark { position: relative; width: 2.25rem; height: 2.25rem; flex: none; }
+.brand__mark { display: block; flex: none; }
 .brand__mark img {
-  position: absolute; inset-block-start: 0; inset-inline-start: 0;
-  width: 2.25rem; height: 2.25rem;
-  /* the global img rule caps width at 100% of the wrapper, which would squash
-     the enlarged mark into an ellipse */
-  max-width: none;
+  width: var(--mark); height: var(--mark);
   transition: width .4s cubic-bezier(.22,1,.36,1), height .4s cubic-bezier(.22,1,.36,1);
 }
-.top:not(.is-stuck) .brand__mark img { width: 4.5rem; height: 4.5rem; }
-@media (min-width: 760px) {
-  .top:not(.is-stuck) .brand__mark img { width: 5.6rem; height: 5.6rem; }
-}
+.top.is-stuck .brand__mark img { width: var(--mark-stuck); height: var(--mark-stuck); }
 
 .brand b {
-  font-family: var(--display); font-size: 1.02rem; font-weight: 600;
+  font-family: var(--display); font-size: 1.18rem; font-weight: 600;
   color: var(--ink); white-space: nowrap;
-  transition: margin-inline-start .4s cubic-bezier(.22,1,.36,1);
+  transition: font-size .4s cubic-bezier(.22,1,.36,1);
 }
-/* step the wordmark aside by exactly the extra width the mark takes up */
-.top:not(.is-stuck) .brand b { margin-inline-start: 2.45rem; }
-@media (min-width: 760px) { .top:not(.is-stuck) .brand b { margin-inline-start: 3.5rem; } }
+.top.is-stuck .brand b { font-size: 1.02rem; }
 @media (max-width: 460px) { .brand b { display: none; } }
 
 .nav { display: none; align-items: center; gap: 1.5rem; }
@@ -247,46 +245,164 @@ html[lang="ar"] .label { letter-spacing: 0; font-size: .82rem; }
 .langsw button:not(.is-on):hover { background: var(--teal-tint); color: var(--teal-dk); }
 
 /* ==========================================================  HERO  ======== */
-.hero { position: relative; padding-block: clamp(3rem, 7.5vw, 6rem) clamp(2.4rem, 5vw, 3.8rem); overflow: hidden; }
-
-/* The mark, blown up and faded — colour without a photograph. */
-.hero__mark {
-  position: absolute; z-index: 0; pointer-events: none; user-select: none;
-  inset-block-start: -12%; inset-inline-end: -14%;
-  width: clamp(280px, 42vw, 600px); opacity: .1;
+/* A full-bleed slideshow: the company first, then one slide per platform.
+   Slides are stacked in one grid cell, so the hero takes the height of its
+   tallest slide and never jumps between them; only opacity changes.
+   The photo sits under a bottom-up scrim, so white text stays readable on
+   any picture, in either reading direction. */
+.hero {
+  --interval: 6.5s;          /* time each slide stays up; the dot bar fills over it */
+  position: relative; overflow: hidden;
+  background: var(--deep); color: #fff;
 }
-@media (min-width: 1000px) { .hero__mark { opacity: .14; inset-inline-end: -6%; } }
 
-.hero .container { position: relative; z-index: 1; }
+.hero__slides { display: grid; }
 
-.eyebrow {
-  color: var(--teal); margin-bottom: 1.35rem;
-  display: flex; align-items: center; gap: .85rem;
+.slide {
+  grid-area: 1 / 1;
+  position: relative; isolation: isolate;
+  display: flex; align-items: flex-end;
+  min-height: clamp(520px, 82vh, 760px);
+  padding-block: clamp(5.5rem, 12vw, 8rem) clamp(5.5rem, 9vw, 6.5rem);
+  opacity: 0; visibility: hidden;
+  transition: opacity .9s ease, visibility 0s linear .9s;
 }
-.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.slide.is-active { opacity: 1; visibility: visible; transition: opacity .9s ease, visibility 0s; }
 
-.hero h1 { max-width: 15ch; margin-bottom: .42em; }
+.slide__img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; max-width: none; object-fit: cover;
+  transform: scale(1.06); transition: transform 7s ease-out;
+}
+.slide.is-active .slide__img { transform: scale(1); }
+
+.slide::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to top, rgba(12, 24, 27, .92) 0%, rgba(12, 24, 27, .62) 42%, rgba(12, 24, 27, .18) 100%);
+}
+/* the platform's own hue, as a hairline along the bottom of its slide */
+.slide::after {
+  content: ""; position: absolute; inset-inline: 0; inset-block-end: 0; height: 3px;
+  background: var(--hue, var(--teal-bright));
+}
+
+.slide__body { position: relative; }
+
+/* --- slide 1: the company ------------------------------------------------ */
+.hero .eyebrow {
+  color: var(--teal-bright); margin-bottom: 1.2rem;
+  display: flex; align-items: center; gap: .85rem; max-width: 46rem;
+}
+.hero .eyebrow::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, .28); }
+
+.hero h1 { color: #fff; max-width: 15ch; margin-bottom: .4em; }
 html[lang="ar"] .hero h1 { max-width: 19ch; }
-.hero h1 em { font-style: normal; color: var(--teal); }
+.hero h1 em { font-style: normal; color: var(--teal-bright); }
 html[lang="en"] .hero h1 em { font-style: italic; }
 
-.hero__lead { font-size: clamp(1.05rem, 1rem + .5vw, 1.3rem); color: var(--muted); max-width: 58ch; }
+.hero__lead {
+  font-size: clamp(1rem, .96rem + .35vw, 1.15rem);
+  color: rgba(255, 255, 255, .84); max-width: 60ch; line-height: 1.85;
+}
 
-/* three-up figure row, counted off the page's own structure — nothing invented */
-.tally {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 0 clamp(.9rem, 4vw, 2.5rem);
-  margin-top: clamp(2.3rem, 5vw, 3.2rem);
-  border-top: 1px solid var(--rule);
+/* --- slides 2…7: one platform each --------------------------------------- */
+.slide__brand { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
+.slide__icon {
+  width: 60px; height: 60px; flex: none; border-radius: 15px; overflow: hidden;
+  background: #fff; display: grid; place-items: center;
+  box-shadow: 0 8px 24px -10px rgba(0, 0, 0, .55);
 }
-.tally div { padding-block: clamp(1.2rem, 3vw, 1.8rem); }
-.tally b {
-  display: block; font-family: var(--display); font-weight: 600;
-  font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem); line-height: 1;
-  color: var(--ink); font-variant-numeric: tabular-nums;
+.slide__icon img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.14); }
+
+.slide__kicker {
+  color: rgba(255, 255, 255, .88); margin: 0;
+  display: inline-flex; align-items: center; gap: .55rem;
 }
-html[lang="en"] .tally b { letter-spacing: -.03em; }
-.tally span { display: block; margin-top: .5rem; font-family: var(--ui); font-size: .83rem; color: var(--muted); line-height: 1.6; }
+.slide__kicker::before { content: ""; width: 22px; height: 2px; background: var(--hue, var(--teal-bright)); }
+
+.slide__title {
+  font-family: var(--display); font-weight: 600; color: #fff;
+  font-size: clamp(2rem, 1.3rem + 3vw, 3.5rem); line-height: 1.15;
+  margin-bottom: .45rem;
+}
+html[lang="ar"] .slide__title { line-height: 1.35; }
+html[lang="en"] .slide__title { letter-spacing: -.015em; }
+
+.slide__line { font-size: clamp(1.02rem, .96rem + .4vw, 1.25rem); color: rgba(255, 255, 255, .86); max-width: 44ch; }
+
+.slide__more {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.4rem;
+  font-family: var(--ui); font-size: .88rem; font-weight: 600; color: #fff;
+  text-decoration: none; padding: .62em 1.25em; border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, .45); background: rgba(255, 255, 255, .08);
+  backdrop-filter: blur(6px); transition: background-color .2s, border-color .2s;
+}
+.slide__more::after { content: "←"; }
+html[dir="ltr"] .slide__more::after { content: "→"; }
+.slide__more:hover { background: rgba(255, 255, 255, .18); border-color: #fff; }
+
+/* --- controls ------------------------------------------------------------ */
+.hero__controls {
+  position: absolute; inset-inline: 0; inset-block-end: clamp(1.4rem, 3.5vw, 2.2rem); z-index: 2;
+  display: flex; align-items: center; gap: .6rem;
+}
+.hero__controls[hidden] { display: none; }
+
+.hero__dots { display: flex; align-items: center; gap: .4rem; margin-inline-end: auto; }
+.hero__dot {
+  position: relative; overflow: hidden; padding: 0; cursor: pointer;
+  width: 26px; height: 4px; border: 0; border-radius: 4px;
+  background: rgba(255, 255, 255, .32); transition: width .3s, background-color .2s;
+}
+/* a larger, invisible hit area around the thin bar */
+.hero__dot::before { content: ""; position: absolute; inset: -12px -3px; }
+.hero__dot:hover { background: rgba(255, 255, 255, .55); }
+.hero__dot.is-active { width: 46px; }
+.hero__dot::after {
+  content: ""; position: absolute; inset: 0; background: #fff;
+  transform: scaleX(0);
+}
+html[dir="rtl"] .hero__dot::after { transform-origin: right; }
+html[dir="ltr"] .hero__dot::after { transform-origin: left; }
+/* the active bar fills over the interval; when it finishes, the script
+   advances the slide — so pausing the animation pauses the slideshow */
+.hero__dot.is-active::after { animation: hero-fill var(--interval) linear forwards; }
+/* hovering, or tabbing into the controls, holds the current slide */
+@media (hover: hover) { .hero:hover .hero__dot.is-active::after { animation-play-state: paused; } }
+.hero:has(:focus-visible) .hero__dot.is-active::after { animation-play-state: paused; }
+.hero.is-paused .hero__dot.is-active::after { animation: none; transform: scaleX(1); }
+@keyframes hero-fill { to { transform: scaleX(1); } }
+
+.hero__btn {
+  width: 42px; height: 42px; flex: none; padding: 0; cursor: pointer;
+  display: grid; place-items: center; border-radius: 50%;
+  color: #fff; background: rgba(255, 255, 255, .08); backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, .38); transition: background-color .2s, border-color .2s;
+}
+.hero__btn:hover { background: rgba(255, 255, 255, .2); border-color: #fff; }
+.hero__btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.hero__pause svg { fill: currentColor; stroke: none; }
+.hero__pause .i-play, .hero.is-paused .hero__pause .i-pause { display: none; }
+.hero.is-paused .hero__pause .i-play { display: block; }
+/* arrows point along the reading direction */
+html[dir="rtl"] .hero__prev svg, html[dir="rtl"] .hero__next svg { transform: scaleX(-1); }
+
+.hero :focus-visible { outline-color: var(--teal-bright); }
+
+@media (max-width: 560px) {
+  .hero__btn { width: 38px; height: 38px; }
+  .hero__dot { width: 18px; }
+  .hero__dot.is-active { width: 32px; }
+}
+
+/* Reduced motion: no zoom, and the slideshow starts paused (see main.js).
+   The global rule further down shortens every animation to nothing; the
+   dot timer is exempt, or a resumed slideshow would race through slides. */
+@media (prefers-reduced-motion: reduce) {
+  .slide__img { transform: none !important; }
+  .hero .hero__dot.is-active::after { animation-duration: var(--interval) !important; }
+}
 
 /* =======================================================  SECTIONS  ======= */
 .sec { padding-block: clamp(3.2rem, 7vw, 5.6rem); }
